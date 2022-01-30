@@ -1,0 +1,19 @@
+.profileStats {
+  box-sizing: border-box;
+  align-self: flex-end;
+  background-color: #141c2f;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  width: 74%;
+}
+
+.profileStats__label {
+  font-size: 1.2rem;
+  color: var(--grey);
+}
+
+.profileStats__value {
+  font-size: 1.5rem;
+  font-weight: 700;
+}

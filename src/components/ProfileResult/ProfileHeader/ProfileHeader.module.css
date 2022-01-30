@@ -1,0 +1,49 @@
+.profileHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.profileHeader__avatar {
+  box-sizing: border-box;
+  border-radius: 100px;
+  border: 1px solid var(--dark-blue-bg);
+  width: 20%;
+}
+
+.profileHeader__profileSummary {
+  /* TODO:
+  profileSummary should always align with Stats and Links components
+  to achive this: whole profileResult should be split into two cols
+  one column just for avator, the other for all other components
+  74% won't always alight perfectly on different viewports
+  */
+  width: 74%;
+}
+
+.profileSummary__topContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profileSummary__username {
+  font-size: 2rem;
+  font-weight: 700;
+  max-width: 60%;
+}
+
+.profileSummary__joined {
+  font-size: 1.2rem;
+  color: var(--grey);
+}
+
+.profileSummary__login {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--light-blue);
+  padding-bottom: 1.5rem;
+}
+
+.profileSummary__bio {
+  font-size: 1.2rem;
+}
