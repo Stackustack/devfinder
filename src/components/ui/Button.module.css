@@ -8,8 +8,14 @@
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--text-white);
+  width: 30%;
 }
 
 .button:hover {
   background-color: #419afc;
+}
+
+.button--disabled,
+.button--disabled:hover {
+  background-color: var(--grey);
 }

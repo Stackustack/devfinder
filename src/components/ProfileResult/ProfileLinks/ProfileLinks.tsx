@@ -6,25 +6,35 @@ import {
   faBuilding,
 } from "@fortawesome/free-solid-svg-icons";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
+import { useContext } from "react";
+import { AppContext } from "../../../store/app-context";
 
 const ProfileLinks = () => {
+  const { profileResult } = useContext(AppContext);
+
+  type linksKey = "location" | "twitter" | "bio" | "organization";
+
+  const prepareContent = (k: linksKey) => {
+    return profileResult[k] ? profileResult[k] : "Not available";
+  };
+
   return (
     <div className={classes.profileLinks}>
       <div className={classes.profileLinks__item}>
         <FontAwesomeIcon icon={faMapMarkerAlt} />
-        San Francisco
+        {prepareContent("location")}
       </div>
       <div className={classes.profileLinks__item}>
         <FontAwesomeIcon icon={faTwitter} />
-        Twitter
+        {prepareContent("twitter")}
       </div>
       <div className={classes.profileLinks__item}>
         <FontAwesomeIcon icon={faLink} />
-        https://github.blog
+        {prepareContent("bio")}
       </div>
       <div className={classes.profileLinks__item}>
         <FontAwesomeIcon icon={faBuilding} />
-        @agithub
+        {prepareContent("organization")}
       </div>
     </div>
   );
