@@ -13,7 +13,6 @@ function App() {
       <Header />
       <Search />
       <ProfileResult />
-      <div>{JSON.stringify(ctx, null, "\t")}</div>
     </div>
   );
 }
