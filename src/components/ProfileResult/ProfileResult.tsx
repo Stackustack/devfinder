@@ -20,7 +20,7 @@ const ProfileResult = () => {
     );
   }
 
-  if (!ctx.profileResult.login) {
+  if (!ctx.profileResult.login || ctx.isLoading) {
     return null;
   }
 
