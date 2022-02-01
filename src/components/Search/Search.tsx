@@ -37,6 +37,8 @@ const Search = () => {
           className={classes["search__input"]}
           placeholder="Search GitHub username..."
           ref={inputValueRef}
+          value={ctx.inputValue}
+          onChange={(e) => ctx.updateInput(e.target.value)}
         />
         <Button
           text={isLoading ? loadingState : "Search"}

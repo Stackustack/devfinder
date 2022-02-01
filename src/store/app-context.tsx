@@ -21,4 +21,5 @@ export const AppContext = createContext({
   inputValue: "",
 
   search: (input: string): void => {},
+  updateInput: (input: string): void => {},
 });

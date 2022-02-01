@@ -4,7 +4,7 @@ import Card from "../ui/Card";
 import ProfileHeader from "./ProfileHeader/ProfileHeader";
 import ProfileLinks from "./ProfileLinks/ProfileLinks";
 import ProfileStats from "./ProfileStats/ProfileStats";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AppContext } from "../../store/app-context";
 
 const ProfileResult = () => {

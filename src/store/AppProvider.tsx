@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useReducer } from "react";
+import { useCallback, useReducer } from "react";
 import { AppContext } from "./app-context";
 
 const defaultAppState = {
@@ -50,6 +50,14 @@ const appReducer = (state: any, action: any) => {
         isLoading: false,
         profileResult: updatedProfile,
       };
+
+    case "UPDATE_INPUT_VALUE": {
+      return {
+        ...state,
+        inputValue: action.value,
+      };
+    }
+
     case "ERROR":
       return { ...state, isError: true, isLoading: false };
     default:
@@ -61,22 +69,25 @@ export const AppProvider = (props: any) => {
   const [appState, dispatch] = useReducer(appReducer, defaultAppState);
 
   const searchUrl = (input: string): string => {
-    // For more elastic search:
-    // return `https://api.github.com/search/users?q=${input}&type=Users`;
-
-    // For now, simple search:
     return `https://api.github.com/users/${input}`;
   };
 
-  const handleSearch = async (input: string) => {
-    try {
-      dispatch({ type: "START_FETCHING" });
-      const response = await axios.get(searchUrl(input));
-      dispatch({ type: "SUCCESSFUL_FETCHING", value: response.data });
-    } catch (e) {
-      dispatch({ type: "ERROR" });
-      console.log(e);
-    }
+  const handleSearch = useCallback(
+    async (input: string) => {
+      try {
+        dispatch({ type: "START_FETCHING" });
+        const response = await axios.get(searchUrl(input));
+        dispatch({ type: "SUCCESSFUL_FETCHING", value: response.data });
+      } catch (e) {
+        dispatch({ type: "ERROR" });
+        console.log(e);
+      }
+    },
+    [dispatch]
+  );
+
+  const updateInput = (inputValue: any) => {
+    dispatch({ type: "UPDATE_INPUT_VALUE", value: inputValue });
   };
 
   const appContext = {
@@ -100,6 +111,7 @@ export const AppProvider = (props: any) => {
     inputValue: appState.inputValue,
 
     search: handleSearch,
+    updateInput: updateInput,
   };
 
   return (
