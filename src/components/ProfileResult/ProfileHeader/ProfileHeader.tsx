@@ -18,7 +18,7 @@ const ProfileHeader = () => {
       <div className={classes.profileHeader__mainInfo}>
         <div className={classes.mainInfo__username}>{name}</div>
         <div className={classes.mainInfo__login}>{login}</div>
-        <div className={classes.mainInfo__joined}>{createdAtParsed}</div>
+        <div className={classes.mainInfo__joined}>{createdAtParsed()}</div>
       </div>
     </div>
   );
