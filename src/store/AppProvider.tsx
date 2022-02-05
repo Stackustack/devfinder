@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useCallback, useReducer } from "react";
-import { AppContext } from "../app-context";
+import { AppContext } from "./app-context";
 
 // for testing / debugging locally - Github API restricts number of calls per hour
 const mock = {

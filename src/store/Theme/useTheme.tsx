@@ -1,5 +1,5 @@
 import { ReactNode, useContext, useState } from "react";
-import ThemeContext from "../theme-context";
+import ThemeContext from "./theme-context";
 
 // This one uses different approach to context with use of custom hooks. More clean I think :)
 // This way all imports are just two lines (import of hook and calling that hook)
