@@ -1,5 +1,5 @@
 import classes from "./LightSwitcher.module.css";
-import { useSwitchTheme, useTheme } from "../../store/useTheme";
+import { useSwitchTheme, useTheme } from "../../store/Theme/useTheme";
 
 const LightSwitcher = () => {
   const switchTheme = useSwitchTheme();

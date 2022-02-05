@@ -4,18 +4,17 @@ import { useTheme } from "./useTheme";
 const ThemeHeaders = () => {
   const theme = useTheme();
 
-  // Ughh... this is ugly :( But i didn't find better way to get that dynamicaly
-  const themeBgColor = getComputedStyle(document.body).getPropertyValue(
-    "--dark-blue-bg"
-  );
-
   return (
     <Helmet>
       <link
         rel="stylesheet"
         href={process.env.PUBLIC_URL + `/themes/${theme}.css`}
       />
-      <meta name="theme-color" content={themeBgColor} />
+      <meta
+        name="theme-color"
+        // Ugh... couldn't find any good solution for that :thinking_face:
+        content={theme === "dark" ? "#141c2f" : "hsl(227, 100%, 98%)"}
+      />
     </Helmet>
   );
 };

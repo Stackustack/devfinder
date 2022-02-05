@@ -1,5 +1,5 @@
 import React from "react";
-import { useThemeManager } from "./useTheme";
+import { useThemeManager } from "./Theme/useTheme";
 
 type ThemeContextTypes = ReturnType<typeof useThemeManager>;
 
