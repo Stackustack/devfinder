@@ -1,0 +1,9 @@
+:root {
+  --dark-blue-bg: #141c2f;
+  --card-blue-bg: #1f2a48;
+  --light-blue: #0079fe;
+  --grey: #8e94a2;
+  --text-white: #ffff;
+  --icon-white: grayscale(1) invert(1);
+
+}

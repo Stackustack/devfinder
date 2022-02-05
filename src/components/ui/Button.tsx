@@ -11,9 +11,7 @@ const Button = ({ text, onClick, disabled }: ButtonType) => {
   return (
     <button
       onClick={onClick}
-      className={`${classes.button} ${
-        disabled ? classes["button--disabled"] : ""
-      }`}
+      className={`${classes.button} ${disabled && classes["button--disabled"]}`}
     >
       {text}
     </button>

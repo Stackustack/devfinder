@@ -1,4 +1,11 @@
 .logo {
-  font-size: 3rem;
+  font-size: 1.6rem;
   font-weight: 700;
+  color: var(--logo-text)
+}
+
+@media (min-width: 768px) {
+  .logo {
+    font-size: 4rem;
+  }
 }

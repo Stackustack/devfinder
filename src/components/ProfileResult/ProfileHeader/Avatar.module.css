@@ -1,0 +1,10 @@
+.avatar {
+  width: 100px;
+  height: 100px;
+  flex-basis: 100px;
+  border-radius: 100%;
+}
+
+.avatar--hidden {
+  display: none;
+}

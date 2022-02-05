@@ -1,49 +1,70 @@
 .profileHeader {
   display: flex;
   justify-content: space-between;
-}
-
-.profileHeader__avatar {
-  box-sizing: border-box;
-  border-radius: 100px;
-  border: 1px solid var(--dark-blue-bg);
-  width: 20%;
-}
-
-.profileHeader__profileSummary {
-  /* TODO:
-  profileSummary should always align with Stats and Links components
-  to achive this: whole profileResult should be split into two cols
-  one column just for avator, the other for all other components
-  74% won't always alight perfectly on different viewports
-  */
-  width: 74%;
-}
-
-.profileSummary__topContainer {
-  display: flex;
-  justify-content: space-between;
+  gap: 5%;
   align-items: center;
 }
 
-.profileSummary__username {
-  font-size: 2rem;
-  font-weight: 700;
-  max-width: 60%;
+.profileHeader__mainInfo {
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 100px);
 }
 
-.profileSummary__joined {
-  font-size: 1.2rem;
-  color: var(--grey);
+.mainInfo__username {
+  font-size: 1.1rem;
+  font-weight: 700;
 }
 
-.profileSummary__login {
-  font-size: 1.2rem;
-  font-weight: 700;
+.mainInfo__login {
   color: var(--light-blue);
-  padding-bottom: 1.5rem;
+  font-size: 0.9rem;
 }
 
-.profileSummary__bio {
-  font-size: 1.2rem;
+.mainInfo__login::before {
+  content: '@';
+}
+
+.mainInfo__joined {
+  color: var(--grey);
+  font-size: 0.9rem;
+}
+
+@media (min-width: 768px) {
+  .profileHeader__mainInfo {
+    width: calc(100% - 150px);
+    display: grid;
+    align-items: center;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    grid-template-areas: 
+      "username joined"
+      "login joined"; 
+  }
+
+  .profileHeader__avatar {
+
+    width: 150px;
+    height: 150px;
+    flex-basis: 150px;
+}
+
+  .mainInfo__username {
+    order: 1;
+    grid-area: 'username';
+    font-size: 1.8rem;
+  }
+
+  .mainInfo__login {
+    order: 3;
+    grid-area: 'login';
+    font-size: 1.3rem;
+  }
+
+  .mainInfo__joined {
+    order: 2;
+    text-align: end;
+    grid-area: 'joined';
+    font-size: 1.2rem;
+  }
 }

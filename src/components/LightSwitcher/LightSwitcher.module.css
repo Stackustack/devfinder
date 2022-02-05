@@ -3,11 +3,25 @@
   gap: 0.8rem;
   align-items: center;
   font-weight: 700;
-  font-size: 1.2rem;
+  font-size: 0.8rem;
+  position:relative;
+  right: 0;
+  top: 3px;
+  color: var(--logo-text)
 }
 
 .icon {
-  filter: grayscale(1) invert(1);
+  filter: var(--icon-white);
   height: auto;
   width: 20px;
+}
+
+@media (min-width: 768px) {
+  .lightSwitcher {
+    font-size: 1.3rem;
+  }
+
+  .icon {
+    width: 25px;
+}
 }

@@ -1,7 +1,16 @@
 .app {
-  width: 1024px;
   display: flex;
   flex-direction: column;
-  margin: 4rem auto;
-  gap: 2rem;
+  padding: 1.5rem;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .app {
+    padding: 3rem;
+    gap: 2rem;
+    max-width: 1024px;
+    align-items: stretch;
+    margin: auto;
+  }
 }

@@ -1,14 +1,46 @@
 .profileResult {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  padding: 1rem;
+  gap: 1.4rem;
+  padding: 1rem 0.5rem;
+}
+
+.profileResult__bio {
+  font-size: 0.9rem;
+}
+
+.profileResult__bio--hidden {
+  display: none;
 }
 
 .notFound {
   display: flex;
   justify-content: center;
-  font-size: 1.5rem;
-  padding: 3rem;
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 2rem 0;
   color: var(--grey)
+}
+
+@media (min-width: 768px) {
+  .profileResult {
+    gap: 3rem;
+    padding: 2rem 1rem;
+    position: relative;
+  }
+
+  .notFound {
+    font-size: 1.6rem;
+    padding: 5rem 0;
+  }
+
+  .profileResult__bio {
+    font-size: 1.2rem;
+    position: relative;
+    /* Hacks needed, would need to refactor main html structure to 
+    get cleaner code here :( (same goes for all minus value margins etc) */
+    width: calc(100% - 150px - 5%);
+    left: calc(150px + 5%);
+    margin-top: -60px;
+  }
 }
