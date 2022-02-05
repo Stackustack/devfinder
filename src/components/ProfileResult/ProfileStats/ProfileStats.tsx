@@ -2,19 +2,19 @@ import Card from "../../ui/Card";
 import classes from "./ProfileStats.module.css";
 import { useContext } from "react";
 import { AppContext } from "../../../store/app-context";
+import { useProfile } from "../../../store/Profile/useProfileResult";
 
 const ProfileStats = () => {
-  const { profileResult } = useContext(AppContext);
-  const { followers, following, repos } = profileResult;
+  const { stats } = useProfile();
 
   return (
     <Card className={classes.profileStats}>
       <div className={classes.profileStats__label}>Repos</div>
       <div className={classes.profileStats__label}>Followers</div>
       <div className={classes.profileStats__label}>Following</div>
-      <div className={classes.profileStats__value}>{repos}</div>
-      <div className={classes.profileStats__value}>{followers}</div>
-      <div className={classes.profileStats__value}>{following}</div>
+      <div className={classes.profileStats__value}>{stats.public_repos}</div>
+      <div className={classes.profileStats__value}>{stats.followers}</div>
+      <div className={classes.profileStats__value}>{stats.following}</div>
     </Card>
   );
 };

@@ -1,13 +1,13 @@
 import { animated, useTransition } from "@react-spring/web";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, createContext } from "react";
 import { AppContext } from "../../store/app-context";
+import { useProfile } from "../../store/Profile/useProfileResult";
 
 const AnimateCard = ({ children }: any) => {
   const [isProfileDisplayed, setIsProfileDisplayed] = useState(false);
 
-  const { profileResult, isError, isLoading, inputValue } =
-    useContext(AppContext);
-  const { joinedDate } = profileResult;
+  const { created_at } = useProfile();
+  const { isError, isLoading, inputValue } = useContext(AppContext);
 
   const transitions = useTransition(isProfileDisplayed, {
     from: { x: 0, y: 100, opacity: 0 },
@@ -19,10 +19,10 @@ const AnimateCard = ({ children }: any) => {
   useEffect(() => {
     if (isLoading) {
       setIsProfileDisplayed(false);
-    } else if (joinedDate || isError) {
+    } else if (created_at || isError) {
       setIsProfileDisplayed(true);
     }
-  }, [joinedDate, isError, isLoading, inputValue]);
+  }, [created_at, isError, isLoading, inputValue]);
 
   return transitions((style, item) =>
     item ? <animated.div style={style}>{children}</animated.div> : ""

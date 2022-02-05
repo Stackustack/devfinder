@@ -5,15 +5,18 @@ import App from "./App";
 import { AppProvider } from "./store/AppProvider";
 import { ThemeProvider } from "./store/Theme/useTheme";
 import ThemeHeaders from "./store/Theme/ThemeHeaders";
+import { ProfileResultProvider } from "./store/Profile/useProfileResult";
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider>
-      <AppProvider>
-        <ThemeHeaders />
-        <App />
-      </AppProvider>
-    </ThemeProvider>
+    <ProfileResultProvider>
+      <ThemeProvider>
+        <AppProvider>
+          <ThemeHeaders />
+          <App />
+        </AppProvider>
+      </ThemeProvider>
+    </ProfileResultProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

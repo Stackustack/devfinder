@@ -10,8 +10,9 @@ import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 const Search = () => {
   const { isLoading, search, inputValue, updateInput } = useContext(AppContext);
+  const SEARCH_ON_TYPE_DELAY = 800;
 
-  // Search on type
+  // "Search On Type", delayed by 800ms
   useEffect(() => {
     if (!inputValue) {
       return;
@@ -19,7 +20,7 @@ const Search = () => {
 
     const timer = setTimeout(() => {
       search(inputValue);
-    }, 800);
+    }, SEARCH_ON_TYPE_DELAY);
 
     return () => {
       clearTimeout(timer);

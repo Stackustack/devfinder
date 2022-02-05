@@ -8,23 +8,15 @@ import ProfileHeader from "./ProfileHeader/ProfileHeader";
 import ProfileLinks from "./ProfileLinks/ProfileLinks";
 import ProfileStats from "./ProfileStats/ProfileStats";
 import { AppContext } from "../../store/app-context";
+import ProfileBio from "./Bio/ProfileBio";
 
 const ProfileResult = () => {
-  const ctx = useContext(AppContext);
-  const { bio } = ctx.profileResult;
+  const { isError } = useContext(AppContext);
 
-  const bioStyles = (): string =>
-    `
-      ${classes["profileResult__bio"]} 
-      ${bio ? "" : classes["profileResult__bio--hidden"]}
-    `;
-
-  if (ctx.isError) {
+  if (isError) {
     return (
       <Card>
-        <div className={classes.notFound}>
-          <>No profiles found :(</>
-        </div>
+        <div className={classes.notFound}>No profiles found :(</div>
       </Card>
     );
   }
@@ -33,7 +25,7 @@ const ProfileResult = () => {
     <Card>
       <div className={classes.profileResult}>
         <ProfileHeader />
-        <div className={bioStyles()}>{bio}</div>
+        <ProfileBio />
         <ProfileStats />
         <ProfileLinks />
       </div>

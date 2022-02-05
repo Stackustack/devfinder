@@ -1,13 +1,13 @@
-import { useContext, useState } from "react";
-import { AppContext } from "../../../store/app-context";
+import { useState } from "react";
+
 import classes from "./Avatar.module.css";
+
 import placeholderImage from "./../../../assets/placeholder_img.png";
+import { useProfile } from "../../../store/Profile/useProfileResult";
 
 const Avatar = () => {
   const [loaded, setLoaded] = useState(false);
-
-  const { profileResult } = useContext(AppContext);
-  const { avatar } = profileResult;
+  const { avatar_url } = useProfile();
 
   const placeholder = (
     <img
@@ -23,7 +23,7 @@ const Avatar = () => {
         className={`${classes.avatar} ${
           !loaded ? classes["avatar--hidden"] : ""
         }`}
-        src={avatar}
+        src={avatar_url}
         alt="avatar"
         onLoad={() => setLoaded(true)}
       />

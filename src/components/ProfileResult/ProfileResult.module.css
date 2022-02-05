@@ -5,14 +5,6 @@
   padding: 1rem 0.5rem;
 }
 
-.profileResult__bio {
-  font-size: 0.9rem;
-}
-
-.profileResult__bio--hidden {
-  display: none;
-}
-
 .notFound {
   display: flex;
   justify-content: center;

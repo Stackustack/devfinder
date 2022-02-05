@@ -1,12 +1,12 @@
 import classes from "./Card.module.css";
 
-type Card = {
+type CardTypes = {
   children?: React.ReactNode;
   bgColor?: string;
   className?: string;
 };
 
-const Card = ({ children, className }: Card) => {
+const Card = ({ children, className }: CardTypes) => {
   return <div className={`${classes.card} ${className}`}>{children}</div>;
 };
 

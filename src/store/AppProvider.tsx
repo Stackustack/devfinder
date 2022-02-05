@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useCallback, useReducer } from "react";
 import { AppContext } from "./app-context";
+import { useSaveProfile } from "./Profile/useProfileResult";
 
 // for testing / debugging locally - Github API restricts number of calls per hour
 const mock = {
@@ -113,6 +114,8 @@ const appReducer = (state: any, action: any) => {
 };
 
 export const AppProvider = (props: any) => {
+  const saveProfile = useSaveProfile();
+
   const [appState, dispatch] = useReducer(appReducer, defaultAppState);
 
   const searchUrl = (input: string): string => {
@@ -127,6 +130,7 @@ export const AppProvider = (props: any) => {
   // - Dont clear data explicitly using "CLEAR_DATA", data should be overriden by
   //   incoming (new) profile data
   const handleSearch = useCallback(
+    // OLD CODE
     async (input: string) => {
       dispatch({ type: "START_FETCHING" });
       setTimeout(() => {
@@ -136,6 +140,7 @@ export const AppProvider = (props: any) => {
         try {
           const response = await axios.get(searchUrl(input));
           dispatch({ type: "SUCCESSFUL_FETCHING", value: response.data });
+          saveProfile(response.data);
         } catch (e) {
           dispatch({ type: "ERROR" });
           console.log(e);
@@ -150,21 +155,6 @@ export const AppProvider = (props: any) => {
   };
 
   const appContext = {
-    profileResult: {
-      username: appState.profileResult.username,
-      login: appState.profileResult.login,
-      avatar: appState.profileResult.avatar,
-      bio: appState.profileResult.bio,
-      joinedDate: appState.profileResult.joinedDate,
-      repos: appState.profileResult.repos,
-      following: appState.profileResult.following,
-      followers: appState.profileResult.followers,
-      location: appState.profileResult.location,
-      organization: appState.profileResult.organization,
-      twitter: appState.profileResult.twitter,
-      webpage: appState.profileResult.webpage,
-    },
-
     isLoading: appState.isLoading,
     isError: appState.isError,
     inputValue: appState.inputValue,
