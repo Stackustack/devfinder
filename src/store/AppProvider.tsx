@@ -147,7 +147,7 @@ export const AppProvider = (props: any) => {
         }
       }, 501);
     },
-    [dispatch]
+    [dispatch, saveProfile]
   );
 
   const updateInput = (inputValue: any) => {

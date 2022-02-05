@@ -1,5 +1,5 @@
 import ProfileResultContext from "./profile-result-context";
-import { ReactNode, useState, useContext } from "react";
+import { ReactNode, useState, useContext, useCallback } from "react";
 import { IProfile } from "./profile-result-context";
 
 export const useProfileResultManager = () => {
@@ -23,26 +23,30 @@ export const useProfileResultManager = () => {
   };
 
   const [profile, setProfile] = useState<IProfile>(initialProfile);
-  const saveProfile = (profile: any) => {
-    setProfile({
-      login: profile.login,
-      name: profile.name,
-      avatar_url: profile.avatar_url,
-      bio: profile.bio,
-      created_at: profile.created_at,
-      stats: {
-        public_repos: profile.public_repos,
-        following: profile.following,
-        followers: profile.followers,
-      },
-      links: {
-        location: profile.location,
-        twitter_username: profile.twitter_username,
-        blog: profile.blog,
-        company: profile.company,
-      },
-    });
-  };
+
+  const saveProfile = useCallback(
+    (profile: any) => {
+      setProfile({
+        login: profile.login,
+        name: profile.name,
+        avatar_url: profile.avatar_url,
+        bio: profile.bio,
+        created_at: profile.created_at,
+        stats: {
+          public_repos: profile.public_repos,
+          following: profile.following,
+          followers: profile.followers,
+        },
+        links: {
+          location: profile.location,
+          twitter_username: profile.twitter_username,
+          blog: profile.blog,
+          company: profile.company,
+        },
+      });
+    },
+    [setProfile]
+  );
 
   return { profile, saveProfile };
 };
