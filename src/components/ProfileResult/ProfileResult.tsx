@@ -1,5 +1,4 @@
-import { useContext, useState } from "react";
-import { useTransition, animated, config } from "@react-spring/web";
+import { useContext } from "react";
 
 import classes from "./ProfileResult.module.css";
 
