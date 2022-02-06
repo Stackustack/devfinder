@@ -4,57 +4,58 @@ import {
   faMapMarkerAlt,
   faBuilding,
 } from "@fortawesome/free-solid-svg-icons";
-
-import classes from "./ProfileLinks.module.css";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 
+import classes from "./ProfileLinks.module.css";
+
 import { useProfileLinks } from "../../../store/Profile/useProfileResult";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 const ProfileLinks = () => {
   const links = useProfileLinks();
+
   type linksKey = "location" | "twitter_username" | "blog" | "company";
 
-  const prepareContent = (k: linksKey) => {
-    return links[k] ? links[k] : "Not available";
+  const icons = (field: linksKey): IconProp => {
+    switch (field) {
+      case "location":
+        return faMapMarkerAlt;
+      case "twitter_username":
+        return faTwitter;
+      case "blog":
+        return faLink;
+      case "company":
+        return faBuilding;
+      default:
+        throw new Error(`Unhadled icon type case: ${field}`);
+    }
   };
 
-  const disabled = (k: linksKey) => {
-    return links[k] ? "" : classes["item_text--not_available"];
-  };
+  const content = Object.entries(links).map((item) => {
+    const linkType = item[0];
+    const linkContent = item[1];
 
-  // To refactor? I could dynamically build that JSX based on provided links
-  // Also 'disabled' styling (could be done for wrapper and not for each single element)
-  return (
-    <div className={classes.profileLinks}>
-      <div className={classes.item__icon}>
-        <FontAwesomeIcon
-          icon={faMapMarkerAlt}
-          className={disabled("location")}
-        />
+    return (
+      <div
+        className={`
+            ${classes.link_item} 
+            ${!linkContent ? classes["link_item--disabled"] : ""}
+          `}
+      >
+        <div>
+          <FontAwesomeIcon
+            className={classes.link_item__icon}
+            icon={icons(linkType as linksKey)}
+          />
+        </div>
+        <div className={classes.link_item__text}>
+          {linkContent ? linkContent : "Not available"}
+        </div>
       </div>
-      <div className={disabled("location")}>{prepareContent("location")}</div>
+    );
+  });
 
-      <div className={classes.item__icon}>
-        <FontAwesomeIcon
-          icon={faTwitter}
-          className={disabled("twitter_username")}
-        />
-      </div>
-      <div className={disabled("twitter_username")}>
-        {prepareContent("twitter_username")}
-      </div>
-
-      <div className={classes.item__icon}>
-        <FontAwesomeIcon icon={faLink} className={disabled("blog")} />
-      </div>
-      <div className={disabled("blog")}>{prepareContent("blog")}</div>
-
-      <div className={classes.item__icon}>
-        <FontAwesomeIcon icon={faBuilding} className={disabled("company")} />
-      </div>
-      <div className={disabled("company")}>{prepareContent("company")}</div>
-    </div>
-  );
+  return <div className={classes.links_container}>{content}</div>;
 };
 
 export default ProfileLinks;
