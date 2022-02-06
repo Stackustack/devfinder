@@ -1,7 +1,7 @@
 
 # DevFinder
 
-[![show-mobile.gif](https://s10.gifyu.com/images/show-mobile.gif)](https://gifyu.com/image/SzNrc)
+![Alt Text](https://media.giphy.com/media/KyKnD8iuqPKFi9KlO0/giphy.gif)
 
 This project was made as one of Frontend Mentor challenges
 - Demo: https://devfinder-challenge.web.app/
