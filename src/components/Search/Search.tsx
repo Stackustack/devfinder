@@ -43,12 +43,14 @@ const Search = () => {
           placeholder="Search username..."
           value={inputValue}
           onChange={(e) => updateInput(e.target.value)}
+          spellCheck="false"
         />
         <input
           className={classes["search__input--big"]}
           placeholder="Search GitHub username..."
           value={inputValue}
           onChange={(e) => updateInput(e.target.value)}
+          spellCheck="false"
         />
         <Button
           text={isLoading ? spinner : "Search"}
@@ -67,5 +69,6 @@ export default Search;
 // I haven't found better way to change placeholder...
 // Solution?  
 // I could use customHook to check for offsetWidth of body element
-// and put that value in state. Then in this component use useEffect to watch for
-// any changes to body width return correct text based on that. But isn't that too much?
+// and put that value in state. Then in Search component use useEffect to watch for
+// any changes to body width and return short/long text based on that. 
+// But isn't that too much? 

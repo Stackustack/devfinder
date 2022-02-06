@@ -4,9 +4,11 @@ This project was made as one of Frontend Mentor challenges
 - Demo: https://devfinder-challenge.web.app/
 - Frontend Mentor challenge: https://www.frontendmentor.io/challenges/github-user-search-app-Q09YOgaH6
 
-RDW: 
-- mobile 
-- desktop 
+Features: 
+- Type on Search
+- RDW
+    - Mobile
+    - Deskotop
 
 Technologies: 
 - react, 
@@ -16,6 +18,7 @@ Technologies:
 - helmet (for dynamic theme managment)
 
 TODO: 
-- refactor main store (AppContext), split to smaller stuff
-- refactor logic
-- clean the mess in components (move stuff to layout, outport logic to helpers and custom hooks)
+- refactor logic related to fetching/saving user data to make it a bit more clean (it uses ugly solutions right now)
+- refactor ProfileResult CSS solution (use grid-areas more effectively)
+- make links to twitter etc to be proper links
+- show loading state for the avatar / fade it in onLoad event
