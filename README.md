@@ -9,7 +9,7 @@ This project was made as one of Frontend Mentor challenges
 
 Features: 
 - Search on Type
-- RDW
+- RWD
     - Mobile
     - Deskotop
 
